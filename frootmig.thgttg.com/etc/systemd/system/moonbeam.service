@@ -1,0 +1,32 @@
+[Unit]
+Description=Moonbeam Collator
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/moonbeam \
+    --name '🦑 frootmig' \
+    --collator \
+    --chain moonbeam \
+    --base-path /var/lib/substrate \
+    --telemetry-url 'wss://api.telemetry.manta.systems/submit/ 0' \
+    --port 32333 \
+    --ws-port 9244 \
+    --ws-max-connections 100 \
+    --rpc-port 9233 \
+    --rpc-cors all \
+    --rpc-methods safe \
+    --state-cache-size 0 \
+    -- \
+    --port 32334 \
+    --ws-port 9245 \
+    --rpc-port 9234 \
+    --pruning archive
+User=substrate
+Group=substrate
+Restart=always
+RestartSec=120
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=multi-user.target
