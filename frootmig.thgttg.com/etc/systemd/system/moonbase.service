@@ -20,8 +20,7 @@ ExecStart=/usr/local/bin/moonbeam \
     -- \
     --port 33334 \
     --ws-port 9345 \
-    --rpc-port 9334 \
-    --pruning archive
+    --rpc-port 9334
 User=substrate
 Group=substrate
 Restart=always
