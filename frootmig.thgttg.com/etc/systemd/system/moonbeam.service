@@ -20,7 +20,8 @@ ExecStart=/usr/local/bin/moonbeam \
     -- \
     --port 32334 \
     --ws-port 9245 \
-    --rpc-port 9234
+    --rpc-port 9234 \
+    --pruning constrained
 User=substrate
 Group=substrate
 Restart=always
