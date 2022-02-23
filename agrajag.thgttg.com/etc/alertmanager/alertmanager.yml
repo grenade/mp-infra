@@ -1,0 +1,16 @@
+---
+global:
+    resolve_timeout: 1m
+route:
+    receiver: email-notifications
+receivers:
+    -
+        name: email-notifications
+        email_configs:
+            -
+                to: rob@manta.systems
+                from: alert@agrajag.thgttg.com
+                smarthost: email-smtp.us-west-2.amazonaws.com:587
+                auth_username: smtp_username
+                auth_password: smtp_password
+                require_tls: yes

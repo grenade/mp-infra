@@ -1,0 +1,37 @@
+[Unit]
+Description=calamari-parachain
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/local/bin/manta \
+  --name calamari-marmara \
+  --pruning archive \
+  --base-path /var/lib/substrate \
+  --chain /usr/share/substrate/calamari.json \
+  --port 30333 \
+  --ws-port 9944 \
+  --ws-external \
+  --rpc-port 9933 \
+  --rpc-external \
+  --rpc-methods auto \
+  --rpc-cors all \
+  --allow-private-ipv4 \
+  --state-cache-size 0 \
+  --node-key-file /usr/share/substrate/calamari-node.prv \
+  --bootnodes \
+    /dns/crispy.calamari.systems/tcp/30333/p2p/12D3KooWNE4LBfkYB2B7D4r9vL54YMMGsfAsXdkhWfBw8VHJSEQc \
+    /dns/crunchy.calamari.systems/tcp/30333/p2p/12D3KooWL3ELxcoMGA6han3wPQoym5DKbYHqkWkCuqyjaCXpyJTt \
+    /dns/hotdog.calamari.systems/tcp/30333/p2p/12D3KooWMHdpUCCS9j8hvNLTV8PeqJ16KaVEjb5PVdYgAQUFUcCG \
+    /dns/tasty.calamari.systems/tcp/30333/p2p/12D3KooWGs2hfnRQ3Y2eAoUyWKUL3g7Jmcsf8FpyhVYeNpXeBMSu \
+    /dns/tender.calamari.systems/tcp/30333/p2p/12D3KooWNXZeUSEKRPsp1yiDH99qSVawQSWHqG4umPjgHsn1joci \
+  -- \
+  --chain /usr/share/substrate/kusama.json
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=multi-user.target
