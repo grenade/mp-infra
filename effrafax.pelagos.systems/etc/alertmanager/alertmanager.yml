@@ -2,15 +2,17 @@
 global:
     resolve_timeout: 1m
 route:
-    receiver: email-notifications
+    receiver: default
 receivers:
     -
-        name: email-notifications
+        name: default
         email_configs:
             -
                 to: rob@manta.systems
                 from: alert@effrafax.pelagos.systems
                 smarthost: email-smtp.us-west-2.amazonaws.com:587
+                auth_identity: smtp_username
                 auth_username: smtp_username
                 auth_password: smtp_password
                 require_tls: yes
+                send_resolved: true
