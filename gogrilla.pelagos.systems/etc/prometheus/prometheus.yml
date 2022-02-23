@@ -17,7 +17,7 @@ scrape_configs:
     static_configs:
       -
         targets:
-          - 0.0.0.0:9090
+          - 0.0.0.0:9091
   -
     job_name: node_exporter
     static_configs:
